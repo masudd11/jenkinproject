@@ -26,9 +26,10 @@ pipeline {
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				sh 'pwd'
-				sh 'docker login -u masudd11 -p Mydocker123##'
-				sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
+				withDockerRegistry(credentialsId: 'usernmepass', url: 'https://hub.docker.com/') {
+                sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
+                }
+				
 				
 			}
 		}
