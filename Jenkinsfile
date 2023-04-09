@@ -20,17 +20,14 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 				sh 'pwd'
-			    // sh 'docker build -t masudd11/helloworld:${BUILD_NUMBER} .'
-				sh 'docker build -t khaledrepo/hellopro:${BUILD_NUMBER} .'
+			    sh 'docker build -t masudd11/helloworld:${BUILD_NUMBER} .'
 			}
 		}
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				// withDockerRegistry(credentialsId:'usernmepass'){
-					// sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
-		        withDockerRegistry(credentialsId: 'ecr:ap-south-1:awskit', url: 'https://ap-south-1.console.aws.amazon.com/ecr/repositories') {
-					sh 'docker push khaledrepo/hellopro:${BUILD_NUMBER}'   
+				withDockerRegistry(credentialsId:'usernmepass'){
+					sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'  
 				}
 			}
 		}
