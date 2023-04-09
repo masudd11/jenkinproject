@@ -31,7 +31,7 @@ pipeline {
 				sh 'docker push masudd11/helloworld:1'
 				
 			}
-
 		}
+		
     }
 }
