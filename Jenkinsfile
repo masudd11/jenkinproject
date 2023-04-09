@@ -29,7 +29,7 @@ pipeline {
 		    steps {
 				// withDockerRegistry(credentialsId:'usernmepass'){
 					// sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
-		        withDockerRegistry(credentialsId: 'aws', url: 'https://ap-south-1.console.aws.amazon.com/ecr/repositories') {
+		        withDockerRegistry(credentialsId: 'ecr:ap-south-1:awskit', url: 'https://ap-south-1.console.aws.amazon.com/ecr/repositories/public/040032546060') {
 					sh 'docker push khaledrepo/hellopro:${BUILD_NUMBER}'   
 				}
 			}
