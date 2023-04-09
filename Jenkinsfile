@@ -27,11 +27,11 @@ pipeline {
 	    stage("Push Docker Image") {
 		    steps {
 				sh 'pwd'
-				sh 'docker image tag masudd11/helloworld:${BUILD_NUMBER} masudd11/helloworld:1'
-				sh 'docker push masudd11/helloworld:1'
+				sh 'docker login -u masudd11 -p Mydocker123##'
+				sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
 				
 			}
 		}
-		
+
     }
 }
