@@ -26,11 +26,9 @@ pipeline {
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				withDockerRegistry(credentialsId: 'usernmepass', url: 'https://hub.docker.com/') {
-                sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
-            }
-				
-				
+				withDockerRegistry(credentialsId:'usernmepass'){
+					sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
+				}
 			}
 		}
 
