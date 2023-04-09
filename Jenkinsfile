@@ -26,8 +26,10 @@ pipeline {
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				withDockerRegistry(credentialsId:'usernmepass'){
-					sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
+				// withDockerRegistry(credentialsId:'usernmepass'){
+					// sh 'docker push masudd11/helloworld:${BUILD_NUMBER}'
+		        withDockerRegistry(credentialsId: 'aws', url: 'public.ecr.aws/b6u1j3l5') {
+					sh 'docker push khaledrepo/hellopro:${BUILD_NUMBER}'   
 				}
 			}
 		}
